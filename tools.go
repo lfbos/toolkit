@@ -120,7 +120,7 @@ func (t *Tools) UploadFiles(r *http.Request, uploadDir string, rename ...bool) (
 
 				uploadedFile.OriginalFileName = hdr.Filename
 				var outfile *os.File
-				// defer outfile.Close()
+				defer outfile.Close()
 
 				if outfile, err = os.Create(filepath.Join(uploadDir, uploadedFile.NewFileName)); err != nil {
 					return nil, err
